@@ -19,6 +19,8 @@
 #include "Features\GrenadeRange.h"
 #include "Features\Nightmode.h"
 #include "Legit\Backtrack.h"
+#include "Rage/antiaim.h"
+#include "Legit/legitbot.h"
 
 Misc     g_Misc;
 Hooks    g_Hooks;
@@ -162,6 +164,10 @@ bool __fastcall Hooks::CreateMove(IClientMode* thisptr, void* edx, float sample_
 
 	if (g::bSendPacket)
 		g::RealAngle = g::pCmd->viewangles;
+
+	antiaim.anti_aim();
+	g_Aimbot.OnCreateMove();
+	//legitbot.aim();
 
 	/* initializes backtrack */
 	g_Backtrack->OnCreateMove();
